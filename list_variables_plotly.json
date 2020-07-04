@@ -1,0 +1,394 @@
+{
+    "FAMI_ESTRATOVIVIENDA": [
+        [
+            "No data",
+            "Sin Estrato",
+            "Estrato 1",
+            "Estrato 2",
+            "Estrato 3",
+            "Estrato 4",
+            "Estrato 5",
+            "Estrato 6"
+        ],
+        "Estrato 2"
+    ],
+    "FAMI_PERSONASHOGAR": [
+        [
+            "No data",
+            "1 a 2",
+            "3 a 4",
+            "5 a 6",
+            "7 a 8",
+            "9 o m\u00e1s"
+        ],
+        "3 a 4"
+    ],
+    "FAMI_CUARTOSHOGAR": [
+        [
+            "No data",
+            "Uno",
+            "Dos",
+            "Tres",
+            "Cuatro",
+            "Cinco",
+            "Seis o mas"
+        ],
+        "Tres"
+    ],
+    "FAMI_EDUCACIONPADRE": [
+        [
+            "No data",
+            "No Aplica",
+            "No sabe",
+            "Ninguno",
+            "Primaria incompleta",
+            "Primaria completa",
+            "Secundaria (Bachillerato) incompleta",
+            "Secundaria (Bachillerato) completa",
+            "T\u00e9cnica o tecnol\u00f3gica incompleta",
+            "T\u00e9cnica o tecnol\u00f3gica completa",
+            "Educaci\u00f3n profesional incompleta",
+            "Educaci\u00f3n profesional completa",
+            "Postgrado"
+        ],
+        "Secundaria (Bachillerato) completa"
+    ],
+    "FAMI_EDUCACIONMADRE": [
+        [
+            "No data",
+            "No Aplica",
+            "No sabe",
+            "Ninguno",
+            "Primaria incompleta",
+            "Primaria completa",
+            "Secundaria (Bachillerato) incompleta",
+            "Secundaria (Bachillerato) completa",
+            "T\u00e9cnica o tecnol\u00f3gica incompleta",
+            "T\u00e9cnica o tecnol\u00f3gica completa",
+            "Educaci\u00f3n profesional incompleta",
+            "Educaci\u00f3n profesional completa",
+            "Postgrado"
+        ],
+        "Secundaria (Bachillerato) completa"
+    ],
+    "FAMI_NUMLIBROS": [
+        [
+            "No data",
+            "0 A 10 LIBROS",
+            "11 A 25 LIBROS",
+            "26 A 100 LIBROS",
+            "M\u00c1S DE 100 LIBROS"
+        ],
+        "0 A 10 LIBROS"
+    ],
+    "FAMI_COMELECHEDERIVADOS": [
+        [
+            "No data",
+            "Nunca o rara vez comemos eso",
+            "1 o 2 veces por semana",
+            "3 a 5 veces por semana",
+            "Todos o casi todos los d\u00edas"
+        ],
+        "1 o 2 veces por semana"
+    ],
+    "FAMI_COMECARNEPESCADOHUEVO": [
+        [
+            "No data",
+            "Nunca o rara vez comemos eso",
+            "1 o 2 veces por semana",
+            "3 a 5 veces por semana",
+            "Todos o casi todos los d\u00edas"
+        ],
+        "Todos o casi todos los d\u00edas"
+    ],
+    "FAMI_COMECEREALFRUTOSLEGUMBRE": [
+        [
+            "No data",
+            "Nunca o rara vez comemos eso",
+            "1 o 2 veces por semana",
+            "3 a 5 veces por semana",
+            "Todos o casi todos los d\u00edas"
+        ],
+        "1 o 2 veces por semana"
+    ],
+    "FAMI_SITUACIONECONOMICA": [
+        [
+            "No data",
+            "Peor",
+            "Igual",
+            "Mejor"
+        ],
+        "Igual"
+    ],
+    "ESTU_DEDICACIONLECTURADIARIA": [
+        [
+            "No data",
+            "No leo por entretenimiento",
+            "30 minutos o menos",
+            "Entre 30 y 60 minutos",
+            "Entre 1 y 2 horas",
+            "M\u00e1s de 2 horas"
+        ],
+        "30 minutos o menos"
+    ],
+    "ESTU_DEDICACIONINTERNET": [
+        [
+            "No data",
+            "No Navega Internet",
+            "30 minutos o menos",
+            "Entre 30 y 60 minutos",
+            "Entre 1 y 3 horas",
+            "M\u00e1s de 3 horas"
+        ],
+        "Entre 1 y 3 horas"
+    ],
+    "ESTU_HORASSEMANATRABAJA": [
+        [
+            "No data",
+            "0",
+            "Menos de 10 horas",
+            "Entre 11 y 20 horas",
+            "Entre 21 y 30 horas",
+            "M\u00e1s de 30 horas"
+        ],
+        "0"
+    ],
+    "ESTU_NACIONALIDAD": [
+        [
+            "ALBANIA",
+            "ARGENTINA",
+            "CHILE",
+            "COLOMBIA",
+            "COSTA RICA",
+            "CROACIA",
+            "CUBA",
+            "ECUADOR",
+            "EL SALVADOR",
+            "ESPA\u00d1A",
+            "ESTADOS UNIDOS",
+            "FRANCIA",
+            "ITALIA",
+            "PER\u00da",
+            "TAIWAN",
+            "VENEZUELA"
+        ],
+        "COLOMBIA"
+    ],
+    "ESTU_GENERO": [
+        [
+            "F",
+            "M",
+            "No data"
+        ],
+        "M"
+    ],
+    "ESTU_TIENEETNIA": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "No"
+    ],
+    "ESTU_DEPTO_RESIDE": [
+        [
+            "AMAZONAS",
+            "ANTIOQUIA",
+            "ARAUCA",
+            "ATLANTICO",
+            "BOGOT\u00c1",
+            "BOLIVAR",
+            "BOYACA",
+            "CALDAS",
+            "CAQUETA",
+            "CASANARE",
+            "CAUCA",
+            "CESAR",
+            "CHOCO",
+            "CORDOBA",
+            "CUNDINAMARCA",
+            "EXTRANJERO",
+            "GUAINIA",
+            "GUAVIARE",
+            "HUILA",
+            "LA GUAJIRA",
+            "MAGDALENA",
+            "META",
+            "NARI\u00d1O",
+            "NORTE SANTANDER",
+            "No data",
+            "PUTUMAYO",
+            "QUINDIO",
+            "RISARALDA",
+            "SAN ANDRES",
+            "SANTANDER",
+            "SUCRE",
+            "TOLIMA",
+            "VALLE",
+            "VAUPES",
+            "VICHADA"
+        ],
+        "BOGOT\u00c1"
+    ],
+    "FAMI_TRABAJOLABORPADRE": [
+        [
+            "Es agricultor, pesquero o jornalero",
+            "Es due\u00f1o de un negocio grande, tiene un cargo de nivel directivo o gerencial",
+            "Es due\u00f1o de un negocio peque\u00f1o (tiene pocos empleados o no tiene, por ejemplo tienda, papeler\u00eda, etc",
+            "Es operario de m\u00e1quinas o conduce veh\u00edculos (taxita, chofer)",
+            "Es vendedor o trabaja en atenci\u00f3n al p\u00fablico",
+            "No aplica",
+            "No data",
+            "No sabe",
+            "Pensionado",
+            "Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente)",
+            "Trabaja como personal de limpieza, mantenimiento, seguridad o construcci\u00f3n",
+            "Trabaja como profesional (por ejemplo m\u00e9dico, abogado, ingeniero)",
+            "Trabaja en el hogar, no trabaja o estudia",
+            "Trabaja por cuenta propia (por ejemplo plomero, electricista)"
+        ],
+        "Es agricultor, pesquero o jornalero"
+    ],
+    "FAMI_TRABAJOLABORMADRE": [
+        [
+            "Es agricultor, pesquero o jornalero",
+            "Es due\u00f1o de un negocio grande, tiene un cargo de nivel directivo o gerencial",
+            "Es due\u00f1o de un negocio peque\u00f1o (tiene pocos empleados o no tiene, por ejemplo tienda, papeler\u00eda, etc",
+            "Es operario de m\u00e1quinas o conduce veh\u00edculos (taxita, chofer)",
+            "Es vendedor o trabaja en atenci\u00f3n al p\u00fablico",
+            "No aplica",
+            "No data",
+            "No sabe",
+            "Pensionado",
+            "Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente)",
+            "Trabaja como personal de limpieza, mantenimiento, seguridad o construcci\u00f3n",
+            "Trabaja como profesional (por ejemplo m\u00e9dico, abogado, ingeniero)",
+            "Trabaja en el hogar, no trabaja o estudia",
+            "Trabaja por cuenta propia (por ejemplo plomero, electricista)"
+        ],
+        "Trabaja en el hogar, no trabaja o estudia"
+    ],
+    "FAMI_TIENEINTERNET": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "Si"
+    ],
+    "FAMI_TIENESERVICIOTV": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "Si"
+    ],
+    "FAMI_TIENECOMPUTADOR": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "Si"
+    ],
+    "FAMI_TIENELAVADORA": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "Si"
+    ],
+    "FAMI_TIENEHORNOMICROOGAS": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "No"
+    ],
+    "FAMI_TIENEAUTOMOVIL": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "No"
+    ],
+    "FAMI_TIENEMOTOCICLETA": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "No"
+    ],
+    "FAMI_TIENECONSOLAVIDEOJUEGOS": [
+        [
+            "No data",
+            "Si",
+            "No"
+        ],
+        "No"
+    ],
+    "COLE_GENERO": [
+        [
+            "FEMENINO",
+            "MASCULINO",
+            "MIXTO"
+        ],
+        "MIXTO"
+    ],
+    "COLE_NATURALEZA": [
+        [
+            "NO OFICIAL",
+            "OFICIAL"
+        ],
+        "OFICIAL"
+    ],
+    "COLE_CALENDARIO": [
+        [
+            "A",
+            "B",
+            "OTRO"
+        ],
+        "A"
+    ],
+    "COLE_BILINGUE": [
+        [
+            "N",
+            "No data",
+            "S"
+        ],
+        "N"
+    ],
+    "COLE_CARACTER": [
+        [
+            "ACAD\u00c9MICO",
+            "NO APLICA",
+            "No data",
+            "T\u00c9CNICO",
+            "T\u00c9CNICO/ACAD\u00c9MICO"
+        ],
+        "ACAD\u00c9MICO"
+    ],
+    "COLE_AREA_UBICACION": [
+        [
+            "RURAL",
+            "URBANO"
+        ],
+        "URBANO"
+    ],
+    "COLE_JORNADA": [
+        [
+            "COMPLETA",
+            "MA\u00d1ANA",
+            "NOCHE",
+            "SABATINA",
+            "TARDE",
+            "UNICA"
+        ],
+        "MA\u00d1ANA"
+    ]
+}
