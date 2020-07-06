@@ -4,6 +4,7 @@ import json
 
 from dashboards.filter_view import *
 from dashboards.simulator import update_result
+from dashboards.prescriptive import *
 
 from dashboards.tabs import *
 
@@ -68,3 +69,23 @@ def call_callback_simulator(app):
         inputs)
     def update_content(*args):
         return update_result(locals())
+
+
+def call_callbacks_prescriptive_filter(app, df_2019):
+    @app.callback(
+        Output('prescriptive_filter', 'children'), 
+        [Input('prescriptive_variables', 'value')])
+    def update_list_prescriptive(prescriptive_variables):
+        return get_list_prescriptive(df_2019, prescriptive_variables)
+
+def call_callbacks_prescriptive_update(app, df_2019):
+    @app.callback(
+        Output('prescriptive_result', 'figure'),
+        [Input('calculate_button', 'n_clicks')],
+        [State('prescriptive_variables', 'value')] + 
+        [State('prescriptive_sample_size', 'value')] + 
+        [State('prescriptive_id_' + str(i), 'value') for i in range(0,100)]
+    )
+    def update_result(*args):
+        return update_prediction(df_2019, locals())
+    

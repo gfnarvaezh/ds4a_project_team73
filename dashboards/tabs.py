@@ -4,6 +4,7 @@ import dash_html_components as html
 from dashboards.dash_test import get_dash
 from dashboards.filter_view import *
 from dashboards.simulator import get_simulator
+from dashboards.prescriptive import get_prescriptive
 
 def build_tabs():
     return dcc.Tabs(
@@ -22,4 +23,4 @@ def build_content_for_tab(tab_name, columns_to_choose, numeric_cols):
     elif tab_name == 'Predictive':
         return get_simulator()
     elif tab_name == 'Prescriptive':
-        return html.Div([html.H1(children='Nothing yet')])
+        return get_prescriptive(columns_to_choose)

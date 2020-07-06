@@ -3,9 +3,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 import plotly.express as px
-from dash.dependencies import Input, Output, State
 
-from dashboards.ordered_variables import *
+from dashboards.variables_info import *
 
 def filter_function(df_2019, var_to_filter, filter):
     return df_2019[df_2019[var_to_filter] == filter]
