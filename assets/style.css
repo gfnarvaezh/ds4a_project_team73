@@ -1,0 +1,21 @@
+.header_analytics{
+    margin: auto;
+}
+
+#general_title{
+    text-align: center;
+}
+
+#tabs_analytics{
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+}
+
+#prescriptive_title{
+    text-align: center;
+}
+
+#analytics_country_filter_period_box{
+    margin: auto;
+}

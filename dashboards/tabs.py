@@ -1,5 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bootstrap_components as dbc
 
 from dashboards.dash_test import get_dash
 from dashboards.filter_view import *
@@ -9,7 +10,7 @@ from dashboards.prescriptive import get_prescriptive
 def build_tabs():
     return dcc.Tabs(
         id="tabs",
-        value='Dashboard',
+        value='Analytics',
         children=[
             dcc.Tab(label='Analytics', value='Analytics'),
             dcc.Tab(label='Predictive', value='Predictive'),

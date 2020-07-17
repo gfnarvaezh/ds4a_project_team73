@@ -11,11 +11,8 @@ import plotly.express as px
 from dashboards.models_predict import predict_global_score
 from dashboards.variables_info import get_order_variables_model
 
-style_box = {'width': 'calc(15% - 25px)', 'display': 'inline-block', 'font-size': '80%', 'padding': '0px 10px 0px 0px', 'margin': '0'}
-style_text = {'width': 'calc(35% - 25px)', 'display': 'inline-block', 'font-size': '80%', 'padding': '0px 0px 0px 10px', 'margin': '0'}
-
-ids_number = []
-variables_list = []
+style_box = {'width': 'calc(10% - 13px)', 'display': 'inline-block', 'font-size': '80%', 'padding': '0px 5px 0px 0px', 'margin': '0'}
+style_text = {'width': 'calc(30% - 25px)', 'display': 'inline-block', 'font-size': '80%', 'padding': '0px 0px 0px 10px', 'margin': '0'}
 
 with open('list_variables_plotly.json') as json_file:
     list_variables_ordered = json.load(json_file)
@@ -27,10 +24,10 @@ def get_prescriptive(columns_to_choose):
 def get_prescriptive_filters(columns_to_choose):
     return html.Div([
               
-        html.H1(children='ThisIsJustATest'),
+        html.H1(children='Prescriptive analytics', id='prescriptive_title'),
 
         html.Div([
-            html.P('var_to_filter'),
+            html.P('Choose the variables to analyze'),
 
             html.Div([
                 dcc.Dropdown(
@@ -51,105 +48,125 @@ def get_prescriptive_filters(columns_to_choose):
         ),
 
         dcc.Graph(id='prescriptive_result', style={'width': '45%', 'display': 'inline-block'})
-
     ])
 
-def get_list_prescriptive(df, columns):
-    global ids_number, variables_list
-    ids_number = 0
-    variables_list = []
-    if type(columns) == str:
-        output = get_list_prescriptive_one_column(df, columns)
-        for i in range(ids_number, 100):
-            output.append(html.Div(children = ' ', id="prescriptive_id_" + str(i)))
+class prescriptive_class():
+    def __init__(self):
+        self.ids_number = 0
+        self.variables_list = []
+
+    def get_list_prescriptive(self, df, columns):
+        self.ids_number = 0
+        self.variables_list = []
+        if type(columns) == str:
+            output = self.get_list_prescriptive_one_column(df, columns)
+            for i in range(self.ids_number, 100):
+                output.append(html.Div(children = ' ', id="prescriptive_id_" + str(i)))
+            return output
+        elif type(columns) == list:
+            output = []
+            for column in columns:
+                output += self.get_list_prescriptive_one_column(df, column)
+
+            for i in range(self.ids_number, 100):
+                output.append(html.Div(children = ' ', id="prescriptive_id_" + str(i)))
+
+            return output
+        else:
+            raise Exception('Getting incorrect data type from columns selection in filter')
+
+    def get_list_prescriptive_one_column(self, df, column):
+        output = [html.H3(column)]
+        sorted_values = sorted(df[column].unique())
+
+        if column in list_variables_ordered:
+            temp_sorted_variables = []
+            for value in list_variables_ordered[column][0]:
+                if value in sorted_values:
+                    temp_sorted_variables.append(value)
+            sorted_values = temp_sorted_variables
+            
+        variables = []
+
+        for value in sorted_values:
+            output.append(html.P(value, style=style_text))
+            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, style=style_box, persistence = True, min = 0))
+            self.ids_number += 1
+            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, style=style_box, persistence = True, min = 0))
+            self.ids_number += 1
+            variables.append(value)
+
+        self.variables_list.append(variables)
+
         return output
-    elif type(columns) == list:
-        output = []
-        for column in columns:
-            output += get_list_prescriptive_one_column(df, column)
 
-        for i in range(ids_number, 100):
-            output.append(html.Div(children = ' ', id="prescriptive_id_" + str(i)))
+    def get_variables_from_text_boxes(self):
+        return self.variables_list
 
-        return output
-    else:
-        raise Exception('Getting incorrect data type from columns selection in filter')
+    def update_prediction(self, df, dic_entrada):
+        try:
+            values = self.allocate_variables_with_values(dic_entrada)
+            print(values)
+            df_sampled = df[get_order_variables_model()].sample(n=values['size'])
+            df_base = generate_prescriptive_dataset(values['percentages'], 'percentages_base', df_sampled)
+            df_evaluation = generate_prescriptive_dataset(values['percentages'], 'percentages_evaluation', df_sampled)
 
-def get_list_prescriptive_one_column(df, column):
-    output = [html.H3(column)]
-    sorted_values = sorted(df[column].unique())
+            results_base = predict_global_score(df_base)
+            results_evaluation = predict_global_score(df_evaluation)
 
-    if column in list_variables_ordered:
-        temp_sorted_variables = []
-        for value in list_variables_ordered[column][0]:
-            if value in sorted_values:
-                temp_sorted_variables.append(value)
-        sorted_values = temp_sorted_variables
-        
-    variables = []
+            result = pd.concat([results_base, results_evaluation], axis=1)
+            result.columns = ['Base', 'Simulation']
 
-    for value in sorted_values:
-        output.append(html.P(value, style=style_text))
-        global ids_number
-        output.append(dcc.Input(id="prescriptive_id_" + str(ids_number), type="number", value = 0, style=style_box, persistence = True, min = 0))
-        ids_number += 1
-        variables.append(value)
+            return px.histogram(result + 250, barmode="overlay")
+        except Exception as e:
+            print(e)
+            return px.histogram(barmode="overlay")
 
-    global variables_list
-    variables_list.append(variables)
+    def allocate_variables_with_values(self, dic_entrada):
+        values = {}
+        values['percentages'] = {}
+        values['columns'] = dic_entrada['args'][1]
+        values['size'] = dic_entrada['args'][2]
 
-    return output
+        init = 3
+        final = 3
 
-def get_variables_from_text_boxes():
-    return variables_list
+        if type(values['columns']) == str:
+            values['columns'] = [values['columns']]
 
-def update_prediction(df, dic_entrada):
-    try:
-        values = allocate_variables_with_values(dic_entrada)
-        df_sampled = df[get_order_variables_model()].sample(n=values['size'])
-        df_prescriptive = generate_prescriptive_dataset(values['percentages'], df_sampled)
+        for index, column in enumerate(values['columns']):
+            values['percentages'][column] = {}
+            values_column = self.variables_list[index]
+            final += len(values_column)*2
+            values['percentages'][column]['categories'] = values_column
 
-        results_sampled = predict_global_score(df_sampled)
-        results_prescriptive = predict_global_score(df_prescriptive)
+            percentages_aggregated = dic_entrada['args'][init:final]
 
-        result = pd.concat([results_sampled, results_prescriptive], axis=1)
-        result.columns = ['Base', 'Simulation']
+            percentages_base = []
+            percentages_evaluation = []
 
-        return px.histogram(result + 250, barmode="overlay")
-    except:
-        return px.histogram(barmode="overlay")
+            for index, value in enumerate(percentages_aggregated):
+                if index%2 == 0:
+                    percentages_base.append(value)
+                else:
+                    percentages_evaluation.append(value)
 
-def allocate_variables_with_values(dic_entrada):
-    values = {}
-    values['percentages'] = {}
-    values['columns'] = dic_entrada['args'][1]
-    values['size'] = dic_entrada['args'][2]
+            values['percentages'][column]['percentages_base'] = percentages_base
+            values['percentages'][column]['percentages_evaluation'] = percentages_evaluation
+            
+            init = final
 
-    init = 3
-    final = 3
+        return values
+            
 
-    if type(values['columns']) == str:
-        values['columns'] = [values['columns']]
-
-    for index, column in enumerate(values['columns']):
-        values['percentages'][column] = {}
-        values_column = variables_list[index]
-        final += len(values_column)
-        values['percentages'][column]['categories'] = values_column
-        values['percentages'][column]['percentages'] = dic_entrada['args'][init:final]
-        init = final
-
-    return values
-        
-
-def generate_prescriptive_dataset(prescriptive_columns, df):
+def generate_prescriptive_dataset(prescriptive_columns, percentage_type, df):
     
     size = df.shape[0]
     df_output = df.copy()
 
     for column in prescriptive_columns:
         categories = prescriptive_columns[column]['categories']
-        percentages = prescriptive_columns[column]['percentages']
+        percentages = prescriptive_columns[column][percentage_type]
         column_data = fill_column_given_percentages(size, categories, percentages)
         df_output['temp_column'] = column_data
         df_output[column] = df_output['temp_column']

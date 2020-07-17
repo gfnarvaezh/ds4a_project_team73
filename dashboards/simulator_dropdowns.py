@@ -6,8 +6,8 @@ import json
 with open('list_variables_plotly.json') as json_file:
     list_variables_plotly = json.load(json_file)
 
-style_dropdown = {'width': 'calc(14% - 20px)', 'display': 'inline-block', 'font-size': '60%', 'padding': '0px 5px 0px 5px'}
-style_dropdown_text = {'width': 'calc(18% - 20px)', 'display': 'inline-block', 'font-size': '60%', 'padding': '0px 5px 0px 5px'}
+style_dropdown = {'width': 'calc(14% - 10px)', 'display': 'inline-block', 'font-size': '60%', 'padding': '0px 5px 0px 5px'}
+style_dropdown_text = {'width': 'calc(18% - 10px)', 'display': 'inline-block', 'font-size': '60%', 'padding': '0px 5px 0px 5px'}
 
 dropdowns = []
 

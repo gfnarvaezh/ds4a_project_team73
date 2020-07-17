@@ -7,6 +7,10 @@ from dashboards.simulator import update_result
 from dashboards.prescriptive import *
 
 from dashboards.tabs import *
+from dashboards.dash_test import build_analytics_tab
+from dashboards.analytics.header_country import get_dash_state, get_dash_country
+
+prescriptive_object = prescriptive_class()
 
 def call_callbacks_tabs(app, df_2019, columns_to_choose, numeric_cols):
     @app.callback(
@@ -14,6 +18,13 @@ def call_callbacks_tabs(app, df_2019, columns_to_choose, numeric_cols):
         [Input("tabs", "value")])
     def update_content(tab_name):
         return build_content_for_tab(tab_name, columns_to_choose, numeric_cols)
+
+def call_callbacks_tabs_analytics(app):
+    @app.callback(
+        Output("content_analytics", "children"),
+        [Input("tabs_analytics", "value")])
+    def update_analytics_tab(tabs_analytics):
+        return build_analytics_tab(tabs_analytics)
 
 def call_callbacks_view_filter(app, df_2019):
     @app.callback(
@@ -37,10 +48,6 @@ def call_callback_heat_map(app, df_2019):
         [Input("selected-horizontal", "value"),
         Input("selected-vertical", "value")])
     def update_figure(horizontal, vertical):
-        print(" selected horizotal is ", horizontal)
-        print(" selected vertical is ", vertical)
-        #horizontal = 'FAMI_EDUCACIONPADRE'
-        #vertical = 'FAMI_EDUCACIONMADRE'
         cols = [horizontal, vertical, 'PERCENTIL_GLOBAL']
         dff = df_2019.groupby([horizontal, vertical])['PERCENTIL_GLOBAL'].mean().reset_index()
         heatmap1_data = pd.pivot_table(dff, values='PERCENTIL_GLOBAL',
@@ -76,7 +83,7 @@ def call_callbacks_prescriptive_filter(app, df_2019):
         Output('prescriptive_filter', 'children'), 
         [Input('prescriptive_variables', 'value')])
     def update_list_prescriptive(prescriptive_variables):
-        return get_list_prescriptive(df_2019, prescriptive_variables)
+        return prescriptive_object.get_list_prescriptive(df_2019, prescriptive_variables)
 
 def call_callbacks_prescriptive_update(app, df_2019):
     @app.callback(
@@ -87,5 +94,25 @@ def call_callbacks_prescriptive_update(app, df_2019):
         [State('prescriptive_id_' + str(i), 'value') for i in range(0,100)]
     )
     def update_result(*args):
-        return update_prediction(df_2019, locals())
-    
+        return prescriptive_object.update_prediction(df_2019, locals())
+
+def call_callback_data_country(app):
+    @app.callback([
+        Output('country_card_max', 'children'),
+        Output('country_card_min', 'children'),
+        ],
+        [Input('analytics_country_filter_period_box', 'value')]
+    )
+    def update_data_country(period):
+        return get_dash_country()
+
+def call_callback_data_state(app):
+    @app.callback([
+        Output('state_card_max', 'children'),
+        Output('state_gauge', 'children'),
+        Output('state_card_min', 'children'),
+        ],
+        [Input('analytics_state_filter_state', 'value')]
+    )
+    def update_data_state(state):
+        return get_dash_state(state)
