@@ -1,5 +1,29 @@
+footer{
+    text-align: center;
+    height: 20px;
+}
+
 .header_analytics{
     margin: auto;
+}
+
+.prescriptive_var_text{
+    width: calc(30%);
+    display: inline-block;
+    font-size: 80%;
+    padding: 0px 0px 0px 10px;
+    margin: 0;
+}
+
+.prescriptive_var_box{
+    width: calc(10%);
+    display: inline-block;
+    font-size: 80%;
+    margin: 5px 0px 0px 0px;
+}
+
+.prescriptive_var_title{
+    font-weight: bold;
 }
 
 #general_title{
@@ -18,4 +42,33 @@
 
 #analytics_country_filter_period_box{
     margin: auto;
+}
+
+#app-content{
+    width: 90%;
+    margin: auto;
+}
+
+#prescriptive_sample_size_text{
+    margin: 5px 0px 0px 0px;
+}
+
+#prescriptive_sample_size{
+    margin: 5px 10px 5px 0px;
+}
+
+#prescriptive_result_box{
+    width: 55%;
+    display: inline-block;
+}
+
+#prescriptive_filter_outer_box{
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#prescriptive_filter{
+    width: 100%;
+    display: inline-block;
 }

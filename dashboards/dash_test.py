@@ -13,7 +13,7 @@ def get_dash(columns_to_choose, numeric_cols):
     return html.Div([
         dcc.Tabs(
             id="tabs_analytics",
-            value='Dashboard',
+            value='Country',
             children=[
                 dcc.Tab(label='Country', value='Country'),
                 dcc.Tab(label='State', value='State'),

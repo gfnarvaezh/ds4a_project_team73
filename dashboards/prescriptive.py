@@ -1,5 +1,6 @@
 import dash
 import dash_core_components as dcc
+import dash_bootstrap_components as dbc
 import dash_html_components as html
 import json
 import pandas as pd
@@ -10,9 +11,6 @@ import plotly.express as px
 
 from dashboards.models_predict import predict_global_score
 from dashboards.variables_info import get_order_variables_model
-
-style_box = {'width': 'calc(10% - 13px)', 'display': 'inline-block', 'font-size': '80%', 'padding': '0px 5px 0px 0px', 'margin': '0'}
-style_text = {'width': 'calc(30% - 25px)', 'display': 'inline-block', 'font-size': '80%', 'padding': '0px 0px 0px 10px', 'margin': '0'}
 
 with open('list_variables_plotly.json') as json_file:
     list_variables_ordered = json.load(json_file)
@@ -36,18 +34,26 @@ def get_prescriptive_filters(columns_to_choose):
                     value='FAMI_ESTRATOVIVIENDA',
                     multi=True
                 )
-            ],
-            style={'width': '100%', 'display': 'inline-block'}),
+            ]),
+
+            html.P('Sample size: ', id = 'prescriptive_sample_size_text'),
             dcc.Input(id="prescriptive_sample_size", type="number", value = 1000),
             html.Button(id='calculate_button', n_clicks=0, children='Calculate'),
             html.Div(
                 [html.Div(children = ' ', id="prescriptive_id_" + str(i)) for i in range(0,100)],
-                id='prescriptive_filter', style={'width': '100%', 'display': 'inline-block'}),
+                id='prescriptive_filter'),
         ],
-        style={'width': '45%', 'display': 'inline-block', 'vertical-align': 'top'}
+        id='prescriptive_filter_outer_box'
         ),
-
-        dcc.Graph(id='prescriptive_result', style={'width': '45%', 'display': 'inline-block'})
+        html.Div([
+            dcc.Loading(
+                        id="loading-2",
+                        children=dcc.Graph(id='prescriptive_result'),
+                        type="circle"
+                    )
+        ],
+        id = 'prescriptive_result_box'
+        )
     ])
 
 class prescriptive_class():
@@ -59,11 +65,8 @@ class prescriptive_class():
         self.ids_number = 0
         self.variables_list = []
         if type(columns) == str:
-            output = self.get_list_prescriptive_one_column(df, columns)
-            for i in range(self.ids_number, 100):
-                output.append(html.Div(children = ' ', id="prescriptive_id_" + str(i)))
-            return output
-        elif type(columns) == list:
+            columns = [columns]
+        if type(columns) == list:
             output = []
             for column in columns:
                 output += self.get_list_prescriptive_one_column(df, column)
@@ -87,12 +90,19 @@ class prescriptive_class():
             sorted_values = temp_sorted_variables
             
         variables = []
+        #Headers columns prescriptive
+        output.append(html.P('Variable name', className = 'prescriptive_var_text prescriptive_var_title'))
+        output.append(html.P('Caso 1', className = 'prescriptive_var_box prescriptive_var_title'))
+        output.append(html.P('Caso 2', className = 'prescriptive_var_box prescriptive_var_title'))
+        output.append(html.P('Variable name', className = 'prescriptive_var_text prescriptive_var_title'))
+        output.append(html.P('Caso 1', className = 'prescriptive_var_box prescriptive_var_title'))
+        output.append(html.P('Caso 2', className = 'prescriptive_var_box prescriptive_var_title'))
 
         for value in sorted_values:
-            output.append(html.P(value, style=style_text))
-            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, style=style_box, persistence = True, min = 0))
+            output.append(html.P(value, className = 'prescriptive_var_text'))
+            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, className = 'prescriptive_var_box', persistence = True, min = 0, max = 100))
             self.ids_number += 1
-            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, style=style_box, persistence = True, min = 0))
+            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, className = 'prescriptive_var_box', persistence = True, min = 0, max = 100))
             self.ids_number += 1
             variables.append(value)
 
@@ -107,7 +117,7 @@ class prescriptive_class():
         try:
             values = self.allocate_variables_with_values(dic_entrada)
             print(values)
-            df_sampled = df[get_order_variables_model()].sample(n=values['size'])
+            df_sampled = df[get_order_variables_model()].sample(n=values['size'], replace = True)
             df_base = generate_prescriptive_dataset(values['percentages'], 'percentages_base', df_sampled)
             df_evaluation = generate_prescriptive_dataset(values['percentages'], 'percentages_evaluation', df_sampled)
 
@@ -115,7 +125,7 @@ class prescriptive_class():
             results_evaluation = predict_global_score(df_evaluation)
 
             result = pd.concat([results_base, results_evaluation], axis=1)
-            result.columns = ['Base', 'Simulation']
+            result.columns = ['Caso 1', 'Caso 2']
 
             return px.histogram(result + 250, barmode="overlay")
         except Exception as e:

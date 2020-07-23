@@ -52,13 +52,18 @@ app.layout = html.Div(
                     [
                         get_filter_view(columns_to_choose, [], numeric_cols),
                         get_heat_map(columns_to_choose)
-                    ], id="app-content"))
+                    ], id="app-content")),
+
+        html.Hr(),
+
+        html.Footer(children =html.Div(
+                    [
+                        'Created by the team 73 - Data science for ALL'
+                    ]) )
     ]
 )
 
 call_callbacks_tabs(app, df_2019, columns_to_choose, numeric_cols)
-call_callbacks_view_filter(app, df_2019)
-call_callback_heat_map(app, df_2019)
 call_callback_simulator(app)
 call_callbacks_prescriptive_filter(app, df_2019)
 call_callbacks_prescriptive_update(app, df_2019)

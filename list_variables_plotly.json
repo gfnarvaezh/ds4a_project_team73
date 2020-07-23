@@ -1,7 +1,6 @@
 {
     "FAMI_ESTRATOVIVIENDA": [
         [
-            "No data",
             "Sin Estrato",
             "Estrato 1",
             "Estrato 2",
@@ -14,7 +13,6 @@
     ],
     "FAMI_PERSONASHOGAR": [
         [
-            "No data",
             "1 a 2",
             "3 a 4",
             "5 a 6",
@@ -25,7 +23,6 @@
     ],
     "FAMI_CUARTOSHOGAR": [
         [
-            "No data",
             "Uno",
             "Dos",
             "Tres",
@@ -37,7 +34,6 @@
     ],
     "FAMI_EDUCACIONPADRE": [
         [
-            "No data",
             "No Aplica",
             "No sabe",
             "Ninguno",
@@ -55,7 +51,6 @@
     ],
     "FAMI_EDUCACIONMADRE": [
         [
-            "No data",
             "No Aplica",
             "No sabe",
             "Ninguno",
@@ -73,7 +68,6 @@
     ],
     "FAMI_NUMLIBROS": [
         [
-            "No data",
             "0 A 10 LIBROS",
             "11 A 25 LIBROS",
             "26 A 100 LIBROS",
@@ -83,7 +77,6 @@
     ],
     "FAMI_COMELECHEDERIVADOS": [
         [
-            "No data",
             "Nunca o rara vez comemos eso",
             "1 o 2 veces por semana",
             "3 a 5 veces por semana",
@@ -93,7 +86,6 @@
     ],
     "FAMI_COMECARNEPESCADOHUEVO": [
         [
-            "No data",
             "Nunca o rara vez comemos eso",
             "1 o 2 veces por semana",
             "3 a 5 veces por semana",
@@ -103,7 +95,6 @@
     ],
     "FAMI_COMECEREALFRUTOSLEGUMBRE": [
         [
-            "No data",
             "Nunca o rara vez comemos eso",
             "1 o 2 veces por semana",
             "3 a 5 veces por semana",
@@ -113,7 +104,6 @@
     ],
     "FAMI_SITUACIONECONOMICA": [
         [
-            "No data",
             "Peor",
             "Igual",
             "Mejor"
@@ -122,7 +112,6 @@
     ],
     "ESTU_DEDICACIONLECTURADIARIA": [
         [
-            "No data",
             "No leo por entretenimiento",
             "30 minutos o menos",
             "Entre 30 y 60 minutos",
@@ -133,7 +122,6 @@
     ],
     "ESTU_DEDICACIONINTERNET": [
         [
-            "No data",
             "No Navega Internet",
             "30 minutos o menos",
             "Entre 30 y 60 minutos",
@@ -144,7 +132,6 @@
     ],
     "ESTU_HORASSEMANATRABAJA": [
         [
-            "No data",
             "0",
             "Menos de 10 horas",
             "Entre 11 y 20 horas",
@@ -184,7 +171,6 @@
     ],
     "ESTU_TIENEETNIA": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -216,7 +202,6 @@
             "META",
             "NARI\u00d1O",
             "NORTE SANTANDER",
-            "No data",
             "PUTUMAYO",
             "QUINDIO",
             "RISARALDA",
@@ -238,7 +223,6 @@
             "Es operario de m\u00e1quinas o conduce veh\u00edculos (taxita, chofer)",
             "Es vendedor o trabaja en atenci\u00f3n al p\u00fablico",
             "No aplica",
-            "No data",
             "No sabe",
             "Pensionado",
             "Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente)",
@@ -257,7 +241,6 @@
             "Es operario de m\u00e1quinas o conduce veh\u00edculos (taxita, chofer)",
             "Es vendedor o trabaja en atenci\u00f3n al p\u00fablico",
             "No aplica",
-            "No data",
             "No sabe",
             "Pensionado",
             "Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente)",
@@ -270,7 +253,6 @@
     ],
     "FAMI_TIENEINTERNET": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -278,7 +260,6 @@
     ],
     "FAMI_TIENESERVICIOTV": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -286,7 +267,6 @@
     ],
     "FAMI_TIENECOMPUTADOR": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -294,7 +274,6 @@
     ],
     "FAMI_TIENELAVADORA": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -302,7 +281,6 @@
     ],
     "FAMI_TIENEHORNOMICROOGAS": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -310,7 +288,6 @@
     ],
     "FAMI_TIENEAUTOMOVIL": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -318,7 +295,6 @@
     ],
     "FAMI_TIENEMOTOCICLETA": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -326,7 +302,6 @@
     ],
     "FAMI_TIENECONSOLAVIDEOJUEGOS": [
         [
-            "No data",
             "Si",
             "No"
         ],
@@ -358,7 +333,6 @@
     "COLE_BILINGUE": [
         [
             "N",
-            "No data",
             "S"
         ],
         "N"
@@ -367,7 +341,6 @@
         [
             "ACAD\u00c9MICO",
             "NO APLICA",
-            "No data",
             "T\u00c9CNICO",
             "T\u00c9CNICO/ACAD\u00c9MICO"
         ],

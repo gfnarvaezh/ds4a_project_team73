@@ -3,6 +3,7 @@ import dash_html_components as html
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
+import plotly.graph_objects as go
 import pandas as pd
 
 def get_df_from_state():
@@ -82,7 +83,6 @@ def get_state_summary_from_state_period(level,state,city,period,feature):
     return df
 
 def get_average_state_gauge(level='country',state={},city={},period = 20194,feature = 'punt_global_sum'):
-    import plotly.graph_objects as go
     minRow = get_min_average_from_country_period(level,state,city,period)
     maxRow = get_max_average_from_country_period(level,state,city,period)
     maxAverage = float(maxRow.AVERAGE) 
@@ -192,7 +192,7 @@ def get_dash_country():
     return get_header_country()
 
 def get_header_state(state='BOYACA'):
-
+    state = 'BOYACA'
     card_max_state = get_indicator_card(type='max',level='state',state=state)
     gauge_state = dcc.Graph(figure=get_average_state_gauge(level='state',state=state,city='BERBEO'))
     card_min_state = get_indicator_card(type='min',level='state',state=state)
@@ -202,3 +202,6 @@ def get_dash_state(state = 'BOYACA'):
     state = 'BOYACA'
     print(state)
     return get_header_state(state)
+
+if __name__ == "__main__":
+    print(get_average_state_gauge(level='state',state='ARAUCA',city='BERBEO'))
