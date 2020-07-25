@@ -11,11 +11,15 @@ import plotly.express as px
 
 from dashboards.models_predict import predict_global_score
 from dashboards.variables_info import get_order_variables_model
+from dashboards.translator import translator_class
+
+translator = translator_class()
 
 with open('list_variables_plotly.json') as json_file:
     list_variables_ordered = json.load(json_file)
 
 def get_prescriptive(columns_to_choose):
+    columns_to_choose = translator.translate_list(columns_to_choose)
     output = get_prescriptive_filters(columns_to_choose)
     return output
 
@@ -23,6 +27,10 @@ def get_prescriptive_filters(columns_to_choose):
     return html.Div([
               
         html.H1(children='Prescriptive analytics', id='prescriptive_title'),
+        html.Div([
+            html.P(children='How to use this tool?', id='prescriptive_description_title'),
+            html.P(children='In this section, you can simulate two scenarios and see how it would affect the score of the students. In the boxes below, select the variables you want to analyze and fill the percentages acordingly. The number of samples is just the number of students involved in the simulation (a bigger number is better, but the simulation takes longer). ', id='prescriptive_description'),
+        ], id='prescriptive_description_box'),
 
         html.Div([
             html.P('Choose the variables to analyze'),
@@ -31,7 +39,7 @@ def get_prescriptive_filters(columns_to_choose):
                 dcc.Dropdown(
                     id='prescriptive_variables',
                     options=[{'label': i, 'value': i} for i in columns_to_choose],
-                    value='FAMI_ESTRATOVIVIENDA',
+                    value=translator.translate('FAMI_ESTRATOVIVIENDA'),
                     multi=True
                 )
             ]),
@@ -50,7 +58,19 @@ def get_prescriptive_filters(columns_to_choose):
                         id="loading-2",
                         children=dcc.Graph(id='prescriptive_result'),
                         type="circle"
-                    )
+                    ),
+            html.Div([
+                html.P('Case 1 average: '),
+                html.Div( id = 'prescriptive_case_1_average')
+            ], id = 'prescriptive_case_1_average_box', className = 'prescriptive_summary'),
+            html.Div([
+                html.P('Case 2 average: '),
+                html.Div( id = 'prescriptive_case_2_average')
+            ], id = 'prescriptive_case_2_average_box', className = 'prescriptive_summary'),
+            html.Div([
+                html.P('Difference: '),
+                html.Div( id = 'prescriptive_p_value')
+            ], id = 'prescriptive_p_value_box', className = 'prescriptive_summary')
         ],
         id = 'prescriptive_result_box'
         )
@@ -65,8 +85,9 @@ class prescriptive_class():
         self.ids_number = 0
         self.variables_list = []
         if type(columns) == str:
-            columns = [columns]
+            columns = [translator.to_original(columns)]
         if type(columns) == list:
+            columns = translator.to_original_list(columns)
             output = []
             for column in columns:
                 output += self.get_list_prescriptive_one_column(df, column)
@@ -79,7 +100,7 @@ class prescriptive_class():
             raise Exception('Getting incorrect data type from columns selection in filter')
 
     def get_list_prescriptive_one_column(self, df, column):
-        output = [html.H3(column)]
+        output = [html.H4(translator.translate(column))]
         sorted_values = sorted(df[column].unique())
 
         if column in list_variables_ordered:
@@ -92,17 +113,17 @@ class prescriptive_class():
         variables = []
         #Headers columns prescriptive
         output.append(html.P('Variable name', className = 'prescriptive_var_text prescriptive_var_title'))
-        output.append(html.P('Caso 1', className = 'prescriptive_var_box prescriptive_var_title'))
-        output.append(html.P('Caso 2', className = 'prescriptive_var_box prescriptive_var_title'))
+        output.append(html.P('Case 1', className = 'prescriptive_var_box prescriptive_var_title'))
+        output.append(html.P('Case 2', className = 'prescriptive_var_box prescriptive_var_title'))
         output.append(html.P('Variable name', className = 'prescriptive_var_text prescriptive_var_title'))
-        output.append(html.P('Caso 1', className = 'prescriptive_var_box prescriptive_var_title'))
-        output.append(html.P('Caso 2', className = 'prescriptive_var_box prescriptive_var_title'))
+        output.append(html.P('Case 1', className = 'prescriptive_var_box prescriptive_var_title'))
+        output.append(html.P('Case 2', className = 'prescriptive_var_box prescriptive_var_title'))
 
         for value in sorted_values:
             output.append(html.P(value, className = 'prescriptive_var_text'))
-            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, className = 'prescriptive_var_box', persistence = True, min = 0, max = 100))
+            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, className = 'prescriptive_var_box prescriptive_case_1', persistence = True, min = 0, max = 100))
             self.ids_number += 1
-            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, className = 'prescriptive_var_box', persistence = True, min = 0, max = 100))
+            output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, className = 'prescriptive_var_box prescriptive_case_2', persistence = True, min = 0, max = 100))
             self.ids_number += 1
             variables.append(value)
 
@@ -125,12 +146,17 @@ class prescriptive_class():
             results_evaluation = predict_global_score(df_evaluation)
 
             result = pd.concat([results_base, results_evaluation], axis=1)
-            result.columns = ['Caso 1', 'Caso 2']
+            result.columns = ['Case 1', 'Case 2']
 
-            return px.histogram(result + 250, barmode="overlay")
+            average_case_1 = round(result['Case 1'].mean(), 1)
+            average_case_2 = round(result['Case 2'].mean(), 1)
+            difference = round(average_case_2 - average_case_1, 1)
+            
+
+            return average_case_1, average_case_2, difference, px.histogram(result, histnorm='probability density', barmode="overlay")
         except Exception as e:
             print(e)
-            return px.histogram(barmode="overlay")
+            return 'Nothing yet', 'Nothing yet', 'Nothing yet', px.histogram(barmode="overlay")
 
     def allocate_variables_with_values(self, dic_entrada):
         values = {}
@@ -143,6 +169,8 @@ class prescriptive_class():
 
         if type(values['columns']) == str:
             values['columns'] = [values['columns']]
+
+        values['columns'] = translator.to_original_list(values['columns'] )
 
         for index, column in enumerate(values['columns']):
             values['percentages'][column] = {}

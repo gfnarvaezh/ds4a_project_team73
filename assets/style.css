@@ -8,7 +8,7 @@ footer{
 }
 
 .prescriptive_var_text{
-    width: calc(30%);
+    width: calc(26%);
     display: inline-block;
     font-size: 80%;
     padding: 0px 0px 0px 10px;
@@ -16,10 +16,29 @@ footer{
 }
 
 .prescriptive_var_box{
-    width: calc(10%);
+    width: calc(12% - 2px);
     display: inline-block;
     font-size: 80%;
-    margin: 5px 0px 0px 0px;
+    margin: 5px 2px 0px 0px;
+    border-style: none;
+}
+
+.prescriptive_case_1{
+    box-shadow: 0px 0px 3px #a4adf8;
+}
+
+.prescriptive_case_2{
+    box-shadow: 0px 0px 3px #eaa098
+}
+
+.prescriptive_summary{
+    display: inline-block;
+    width: calc(33% - 8px);
+    border-radius: 4px;
+    border-style: none;
+    --box-shadow-color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 3px var(--box-shadow-color);
+    margin: 1px 4px 1px 4px;
 }
 
 .prescriptive_var_title{
@@ -49,6 +68,27 @@ footer{
     margin: auto;
 }
 
+#prescriptive_description_box{
+    box-shadow: 0px 0px 1px;
+    border-radius: 4px;
+    margin: 0px 0px 15px 0px;
+    width: 70%;
+    margin: auto;
+}
+
+#prescriptive_description_title{
+    text-align: center;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    padding: 5px 0px 5px 0px;
+    border-radius: 5px;
+}
+
+#prescriptive_description{
+    text-align: center;
+    padding: 4px;
+}
+
 #prescriptive_sample_size_text{
     margin: 5px 0px 0px 0px;
 }
@@ -60,6 +100,7 @@ footer{
 #prescriptive_result_box{
     width: 55%;
     display: inline-block;
+    text-align: center;
 }
 
 #prescriptive_filter_outer_box{
@@ -70,5 +111,24 @@ footer{
 
 #prescriptive_filter{
     width: 100%;
+    display: inline-block;
+}
+
+#calculate_button {
+    border-style: none;
+    box-shadow: 0px 0px 2px;
+}
+
+#prescriptive_case_1_average_box{
+    display: inline-block;
+    --box-shadow-color: #a4adf8;
+}
+
+#prescriptive_case_2_average_box{
+    display: inline-block;
+    --box-shadow-color: #eaa098;
+}
+
+#prescriptive_p_value_box{
     display: inline-block;
 }

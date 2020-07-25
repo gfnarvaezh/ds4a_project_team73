@@ -47,8 +47,11 @@ def call_callbacks_prescriptive_filter(app, df_2019):
         return prescriptive_object.get_list_prescriptive(df_2019, prescriptive_variables)
 
 def call_callbacks_prescriptive_update(app, df_2019):
-    @app.callback(
-        Output('prescriptive_result', 'figure'),
+    @app.callback([
+        Output('prescriptive_case_1_average', 'children'),
+        Output('prescriptive_case_2_average', 'children'),
+        Output('prescriptive_p_value', 'children'),
+        Output('prescriptive_result', 'figure')],
         [Input('calculate_button', 'n_clicks')],
         [State('prescriptive_variables', 'value')] + 
         [State('prescriptive_sample_size', 'value')] + 

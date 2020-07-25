@@ -1,0 +1,326 @@
+{
+   "COLE_AREA_UBICACION":{
+      "spanish":"ZONA",
+      "english":"ZONE"
+   },
+   "COLE_BILINGUE":{
+      "spanish":"BILINGUE",
+      "english":"BILINGUAL"
+   },
+   "COLE_CALENDARIO":{
+      "spanish":"CALENDARIO",
+      "english":"CALENDAR"
+   },
+   "COLE_CARACTER":{
+      "spanish":"CARACTER",
+      "english":"CHARACTER"
+   },
+   "COLE_COD_DANE_ESTABLECIMIENTO":{
+      "spanish":"CODIGO DANE",
+      "english":"DANE CODE"
+   },
+   "COLE_COD_DANE_SEDE":{
+      "spanish":"CODIGO DANE SEDE",
+      "english":"CODE DANE HEADQUARTERS"
+   },
+   "COLE_COD_DEPTO_UBICACION":{
+      "spanish":"CODIGO DEPARTAMENTO",
+      "english":"DEPARTMENT CODE"
+   },
+   "COLE_COD_MCPIO_UBICACION":{
+      "spanish":"CODIGO MUNICIPIO",
+      "english":"MUNICIPALITY CODE"
+   },
+   "COLE_CODIGO_ICFES":{
+      "spanish":"CODIGO ICFES",
+      "english":"ICFES CODE"
+   },
+   "COLE_DEPTO_UBICACION":{
+      "spanish":"DEPARTAMENTO",
+      "english":"DEPARTMENT"
+   },
+   "COLE_GENERO":{
+      "spanish":"G\u00c9NERO COLEGIO",
+      "english":"GENDER SCHOOL"
+   },
+   "COLE_JORNADA":{
+      "spanish":"JORNADA",
+      "english":"WORKING HOURS"
+   },
+   "COLE_MCPIO_UBICACION":{
+      "spanish":"MUNICIPIO COLEGIO",
+      "english":"COLLEGE MUNICIPALITYITY"
+   },
+   "COLE_NATURALEZA":{
+      "spanish":"TIPO",
+      "english":"TYPE"
+   },
+   "COLE_NOMBRE_ESTABLECIMIENTO":{
+      "spanish":"NOMBRE",
+      "english":"NAME"
+   },
+   "COLE_NOMBRE_SEDE":{
+      "spanish":"SEDE",
+      "english":"CAMPUS"
+   },
+   "COLE_SEDE_PRINCIPAL":{
+      "spanish":"SEDE PRINCIPAL",
+      "english":"HEADQUARTERS"
+   },
+   "DESEMP_C_NATURALES":{
+      "spanish":"CIENCIAS NATURALES",
+      "english":"NATURAL SCIENCES"
+   },
+   "DESEMP_INGLES":{
+      "spanish":"DESEMPENO INGL\u00c9S",
+      "english":"ENGLISH PERFORMANCE"
+   },
+   "DESEMP_LECTURA_CRITICA":{
+      "spanish":"DESEMPENO LECTURA CRITICA",
+      "english":"CRITICAL READING PERFORMANCE"
+   },
+   "DESEMP_MATEMATICAS":{
+      "spanish":"DESEMPENO MATEMATICAS",
+      "english":"MATHEMATICS PERFORMANCE "
+   },
+   "DESEMP_SOCIALES_CIUDADANAS":{
+      "spanish":"DESEMPENO SOCIALES CIUDADANAS",
+      "english":"CITIZEN SOCIAL PERFORMANCE"
+   },
+   "ESTU_COD_DEPTO_PRESENTACION":{
+      "spanish":"CODIGO DEPARTAMENTO PRESENTACION",
+      "english":"CODE DEPARTMENT PRESENTATION"
+   },
+   "ESTU_COD_MCPIO_PRESENTACION":{
+      "spanish":"CODIGO MUNICIPIO PRESENTACION",
+      "english":"MUNICIPALITY CODE PRESENTATION"
+   },
+   "ESTU_COD_RESIDE_DEPTO":{
+      "spanish":"CODIGO DEPARTAMENTO RESIDENCIA",
+      "english":"RESIDENCE DEPARTMENT CODE"
+   },
+   "ESTU_COD_RESIDE_MCPIO":{
+      "spanish":"CODIGO MUNICIPIO RESIDENCIA",
+      "english":"RESIDENCE MUNICIPALITYITY CODE"
+   },
+   "ESTU_CONSECUTIVO":{
+      "spanish":"CONSECUTIVO",
+      "english":"CONSECUTIVE"
+   },
+   "ESTU_DEDICACIONINTERNET":{
+      "spanish":"DEDICACION INTERNET",
+      "english":"INTERNET DEDICATION"
+   },
+   "ESTU_DEDICACIONLECTURADIARIA":{
+      "spanish":"DEDICACION LECTURA DIARIA",
+      "english":"DAILY READING DEDICATION"
+   },
+   "ESTU_DEPTO_PRESENTACION":{
+      "spanish":"DEPARTAMENTO PRESENTACION",
+      "english":"PRESENTATION DEPARTMENT"
+   },
+   "ESTU_DEPTO_RESIDE":{
+      "spanish":"DEPARTAMENTO RESIDENCIA",
+      "english":"RESIDENCE DEPARTMENT"
+   },
+   "ESTU_ESTADOINVESTIGACION":{
+      "spanish":"ESTADO INVESTIGACION",
+      "english":"INVESTIGATION STATUS"
+   },
+   "ESTU_ESTUDIANTE":{
+      "spanish":"ESTUDIANTE",
+      "english":"STUDENT"
+   },
+   "ESTU_ETNIA":{
+      "spanish":"ETNIA",
+      "english":"ETNIA"
+   },
+   "ESTU_FECHANACIMIENTO":{
+      "spanish":"FECHA NACIMIENTO",
+      "english":"BIRTH DATE"
+   },
+   "ESTU_GENERO":{
+      "spanish":"G\u00c9NERO ESTUDIANTE",
+      "english":"STUDENT GENDER"
+   },
+   "ESTU_HORASSEMANATRABAJA":{
+      "spanish":"HORAS TRABAJO SEMANAL",
+      "english":"WEEKLY WORK HOURS"
+   },
+   "ESTU_INSE_INDIVIDUAL":{
+      "spanish":"INSE INDIVIDUAL",
+      "english":"INDIVIDUAL INSE"
+   },
+   "ESTU_MCPIO_PRESENTACION":{
+      "spanish":"MUNICIPIO PRESENTACION",
+      "english":"MUNICIPALITYITY PRESENTATION"
+   },
+   "ESTU_MCPIO_RESIDE":{
+      "spanish":"MUNICIPIO RESIDENCIA",
+      "english":"MUNICIPALITYITY OF RESIDENCE"
+   },
+   "ESTU_NACIONALIDAD":{
+      "spanish":"NACIONALIDAD",
+      "english":"NATIONALITY"
+   },
+   "ESTU_NSE_ESTABLECIMIENTO":{
+      "spanish":"NSE COLEGIO",
+      "english":"NSE SCHOOL"
+   },
+   "ESTU_NSE_INDIVIDUAL":{
+      "spanish":"NSE",
+      "english":"NSE"
+   },
+   "ESTU_PAIS_RESIDE":{
+      "spanish":"PAIS",
+      "english":"COUNTRY"
+   },
+   "ESTU_PRIVADO_LIBERTAD":{
+      "spanish":"PRIVADO LIBERTAD",
+      "english":"PRIVATE FREEDOM"
+   },
+   "ESTU_TIENEETNIA":{
+      "spanish":"TIENE ETNIA",
+      "english":"HAS ETHNIC"
+   },
+   "ESTU_TIPODOCUMENTO":{
+      "spanish":"TIPO DOCUMENTO",
+      "english":"DOCUMENT TYPE"
+   },
+   "ESTU_TIPOREMUNERACION":{
+      "spanish":"REMUNERACION",
+      "english":"REMUNERATION"
+   },
+   "FAMI_COMECARNEPESCADOHUEVO":{
+      "spanish":"PROTEINAS",
+      "english":"PROTEINS"
+   },
+   "FAMI_COMECEREALFRUTOSLEGUMBRE":{
+      "spanish":"CEREAL O FRUTOS O LEGUMBRES",
+      "english":"CEREAL OR FRUITS OR VEGETABLES"
+   },
+   "FAMI_COMELECHEDERIVADOS":{
+      "spanish":"LECHE",
+      "english":"MILK"
+   },
+   "FAMI_CUARTOSHOGAR":{
+      "spanish":"HABITACIONES",
+      "english":"BEDROOMS"
+   },
+   "FAMI_EDUCACIONMADRE":{
+      "spanish":"EDUCACION MADRE",
+      "english":"MOTHER EDUCATION"
+   },
+   "FAMI_EDUCACIONPADRE":{
+      "spanish":"EDUCACION PADRE",
+      "english":"PARENT EDUCATION"
+   },
+   "FAMI_ESTRATOVIVIENDA":{
+      "spanish":"ESTRATO",
+      "english":"STRATUM"
+   },
+   "FAMI_NUMLIBROS":{
+      "spanish":"N\u00daMERO LIBROS",
+      "english":"NUMBER OF BOOKS"
+   },
+   "FAMI_PERSONASHOGAR":{
+      "spanish":"PERSONAS EN HOGAR",
+      "english":"PEOPLE AT HOME"
+   },
+   "FAMI_SITUACIONECONOMICA":{
+      "spanish":"SITUACION ECONOMICA",
+      "english":"ECONOMIC SITUATION"
+   },
+   "FAMI_TIENEAUTOMOVIL":{
+      "spanish":"AUTOMOVIL",
+      "english":"CAR"
+   },
+   "FAMI_TIENECOMPUTADOR":{
+      "spanish":"COMPUTADOR",
+      "english":"COMPUTER"
+   },
+   "FAMI_TIENECONSOLAVIDEOJUEGOS":{
+      "spanish":"CONSOLA VIDEOJUEGOS",
+      "english":"CONSOLE VIDEO GAMES"
+   },
+   "FAMI_TIENEHORNOMICROOGAS":{
+      "spanish":"HORNO MICROONDAS",
+      "english":"MICROWAVE OVEN"
+   },
+   "FAMI_TIENEINTERNET":{
+      "spanish":"INTERNET",
+      "english":"INTERNET"
+   },
+   "FAMI_TIENELAVADORA":{
+      "spanish":"LAVADORA",
+      "english":"WASHING MACHINE"
+   },
+   "FAMI_TIENEMOTOCICLETA":{
+      "spanish":"MOTOCICLETA",
+      "english":"MOTORCYCLE"
+   },
+   "FAMI_TIENESERVICIOTV":{
+      "spanish":"SERVICIO TV",
+      "english":"TV SERVICE"
+   },
+   "FAMI_TRABAJOLABORMADRE":{
+      "spanish":"TRABAJO MADRE",
+      "english":"MOTHER WORK"
+   },
+   "FAMI_TRABAJOLABORPADRE":{
+      "spanish":"TRABAJO PADRE",
+      "english":"PARENT WORK"
+   },
+   "PERCENTIL_C_NATURALES":{
+      "spanish":"PERCENTIL CIENCIAS NATURALES",
+      "english":"PERCENTIL NATURAL SCIENCES"
+   },
+   "PERCENTIL_GLOBAL":{
+      "spanish":"PERCENTIL CIENCIAS GLOBAL",
+      "english":"GLOBAL PERCENTIL SCIENCES"
+   },
+   "PERCENTIL_INGLES":{
+      "spanish":"PERCENTIL GLOBAL",
+      "english":"GLOBAL PERCENTILE"
+   },
+   "PERCENTIL_LECTURA_CRITICA":{
+      "spanish":"PERCENTIL LECTURA CRITICA",
+      "english":"CRITICAL READING PERCENTIL"
+   },
+   "PERCENTIL_MATEMATICAS":{
+      "spanish":"PERCENTIL MATEMATICAS",
+      "english":"MATH PERCENTIL"
+   },
+   "PERCENTIL_SOCIALES_CIUDADANAS":{
+      "spanish":"PERCENTIL SOCIALES CIUDADANAS",
+      "english":"SOCIALES CITIZENS PERCENTIL"
+   },
+   "PERIODO":{
+      "spanish":"PERIODO",
+      "english":"PERIOD"
+   },
+   "PUNT_C_NATURALES":{
+      "spanish":"PUNTAJE CIENCIAS NATURALES",
+      "english":"NATURAL SCIENCES SCORE"
+   },
+   "PUNT_GLOBAL":{
+      "spanish":"PUNTAJE GLOBAL",
+      "english":"GLOBAL SCORE"
+   },
+   "PUNT_INGLES":{
+      "spanish":"PUNTAJE INGL\u00c9S",
+      "english":"ENGLISH SCORE"
+   },
+   "PUNT_LECTURA_CRITICA":{
+      "spanish":"PUNTAJE LECTURA CRITICA",
+      "english":"CRITICAL READING SCORE"
+   },
+   "PUNT_MATEMATICAS":{
+      "spanish":"PUNTAJE MATEMATICAS",
+      "english":"MATH SCORE"
+   },
+   "PUNT_SOCIALES_CIUDADANAS":{
+      "spanish":"PUNTAJE SOCIALES CIUDADANAS",
+      "english":"CITIZENS SOCIAL SCORE"
+   }
+}

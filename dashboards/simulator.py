@@ -34,7 +34,7 @@ def update_result(dic_entrada):
     results = predict_all_models(pd.DataFrame([dic_fixed]))
 
     output = []
-    total = 250
+    total = 0
 
     for score in results:
         output.append(html.H3(score, style = style_results))

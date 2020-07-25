@@ -30,7 +30,7 @@ def predict_global_score(df):
 def predict_all_models(df):
     result = {}
     for score in scores:
-        result[score] = models[score].predict(transform_data(df))
+        result[score] = models[score].predict(transform_data(df)) + 50
     
     return result
 
