@@ -5,43 +5,55 @@ import pandas as pd
 import json
 
 from dashboards.simulator_dropdowns import get_dropdowns
-from dashboards.variables_info import get_scores
-from dashboards.models_predict import predict_all_models
+from dashboards.variables_info import get_scores, get_variables_predictive
+from dashboards.models_predict import predict_score
+from dashboards.draw_explainer import get_bars_for_descriptive
+from dashboards.translator import translator_class
 
-style_results = {'width': 'calc(25% - 20px)', 'display': 'inline-block', 'font-size': '60%', 'padding': '0px 5px 0px 5px'}
-
+translator = translator_class()
 scores = get_scores()
+variables_predictive = get_variables_predictive()
+
 
 with open('list_variables_plotly.json') as json_file:
     list_variables_plotly = json.load(json_file)
 
 def get_simulator():
     return html.Div([
+                html.Div([
+                html.P(children='How to use this tool?', id='prescriptive_description_title'),
+                html.P(children='In this section, you can simulate the results of an individual student, according to a simplified model using 10 variables. Below the result, it is possible to see how each variable affected the overall score. ', id='prescriptive_description'),
+            ], id='prescriptive_description_box'),
+            html.P('Modify the variables below to see the result'),
             get_dropdowns(),
-            html.Div(id="result_simulation")
+            html.Div(id="result_simulation"),
+            dcc.Loading(
+                        id="loading-2",
+                        children=html.Div(id = 'graph_simulation'),
+                        type="circle"
+                    ),
         ])
 
 def update_result(dic_entrada):
     
     dic_fixed = {}
-    dic_fixed['EDAD'] = -18*365
     i = 0
 
-    for variable in list_variables_plotly:
-        dic_fixed[variable] = dic_entrada['args'][i]
+    for variable in variables_predictive:
+        dic_fixed[variable.lower()] = translator.to_original(dic_entrada['args'][i])
         i += 1
 
-    results = predict_all_models(pd.DataFrame([dic_fixed]))
+    score = round(predict_score(dic_fixed)[0])
 
     output = []
-    total = 0
 
-    for score in results:
-        output.append(html.H3(score, style = style_results))
-        output.append(html.H5(str(results[score][0] + 50), style = style_results))
-        total = total + results[score][0]
-    
-    output.append(html.H3('TOTAL SCORE', style = style_results))
-    output.append(html.H5(str(total), style = style_results))
+    output.append(html.H3('Global Score', id = 'predictive_result_title'))
+    output.append(html.H5(str(score), id = 'predictive_result_title'))
 
-    return html.Div(output)
+    return html.Div(output, id = 'predictive_result_numeric_box')
+
+def update_graph_simulator(dic_entrada):
+    listInput = translator.to_original_list(dic_entrada['args'])
+    #print(listInput)
+    #listInput = ['Estrato 2', 'Ninguna', 'Secundaria (bachillerato) completa', '0 A 10 LIBROS', '1 o 2 veces por semana', '30 minutos o menos', 'Entre 1 y 3 horas', '0']
+    return get_bars_for_descriptive(listInput)

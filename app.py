@@ -13,7 +13,8 @@ from dashboards.callbacks import *
 from dashboards.load_dataframe import load_file
 
 
-df_2019, columns_to_choose, numeric_cols = load_file(file_name = 'SB11_20192.TXT')
+df_2019, columns_to_choose_raw, numeric_cols = load_file(file_name = 'SB11_20192.TXT')
+columns_to_choose = item_list = [e for e in columns_to_choose_raw if e not in ('EDAD', 'ESTU_DEPTO_RESIDE')]
 FONT_AWESOME = "https://use.fontawesome.com/releases/v5.7.2/css/all.css"
 FONT_GLYCOSE = "https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 
@@ -48,17 +49,13 @@ app.layout = html.Div(
                 ),
             ],
         ),
-        html.Div(children=html.Div(
-                    [
-                        get_filter_view(columns_to_choose, [], numeric_cols),
-                        get_heat_map(columns_to_choose)
-                    ], id="app-content")),
+        html.Div(children=html.Div(id="app-content")),
 
         html.Hr(),
 
         html.Footer(children =html.Div(
                     [
-                        'Created by the team 73 - Data science for ALL'
+                        'Created by the team 73 - Data science for All'
                     ]) )
     ]
 )
@@ -67,9 +64,14 @@ call_callbacks_tabs(app, df_2019, columns_to_choose, numeric_cols)
 call_callback_simulator(app)
 call_callbacks_prescriptive_filter(app, df_2019)
 call_callbacks_prescriptive_update(app, df_2019)
-call_callbacks_tabs_analytics(app)
+call_callbacks_tabs_analytics(app, columns_to_choose)
 call_callback_data_state(app)
 call_callback_data_country(app)
+call_callback_data_city(app)
+call_callback_city_dropdown(app)
+call_callback_country_bar_chart(app)
+call_callback_state_bar_chart(app)
+call_callback_city_bar_chart(app)
 
 if __name__ == '__main__':
     app.run_server(debug=True)

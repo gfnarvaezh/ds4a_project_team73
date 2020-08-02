@@ -13,8 +13,8 @@ def build_tabs():
         value='Analytics',
         children=[
             dcc.Tab(label='Analytics', value='Analytics'),
-            dcc.Tab(label='Predictive', value='Predictive'),
-            dcc.Tab(label='Prescriptive', value='Prescriptive')
+            dcc.Tab(label='Simulator', value='Predictive'),
+            dcc.Tab(label='Forecasting and testing', value='Prescriptive')
         ]
     )
 

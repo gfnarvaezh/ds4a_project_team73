@@ -30,5 +30,6 @@ class translator_class():
 
 if __name__ == '__main__':
     translator = translator_class()
-    print(translator.translate('COLE_BILINGUE'))
+    print(translator.translate('COLE_BILINGUEkmñkbhjv'))
+    print(translator.to_original(translator.translate('COLE_BILINGUEkmñkbhjv')))
 

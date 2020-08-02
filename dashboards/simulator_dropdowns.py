@@ -3,10 +3,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 import json
 
+from dashboards.variables_info import get_variables_predictive
+
 from dashboards.translator import translator_class
 
 with open('list_variables_plotly.json') as json_file:
     list_variables_plotly = json.load(json_file)
+
+variables_predictive = get_variables_predictive()
 
 translator = translator_class()
 
@@ -14,16 +18,17 @@ style_dropdown = {'width': 'calc(14% - 10px)', 'display': 'inline-block', 'font-
 style_dropdown_text = {'width': 'calc(18% - 10px)', 'display': 'inline-block', 'font-size': '60%', 'padding': '0px 5px 0px 5px'}
 
 
+
 def get_dropdowns():
 
     dropdowns = []
 
-    for variable in list_variables_plotly:
+    for variable in variables_predictive:
         div = html.Div([
                     dcc.Dropdown(
                         id='filter_' + variable,
-                        options=[{'label': i, 'value': i} for i in list_variables_plotly[variable][0]],
-                        value=list_variables_plotly[variable][1],
+                        options=[{'label': i, 'value': i} for i in translator.translate_list(list_variables_plotly[variable][0])],
+                        value=translator.translate(list_variables_plotly[variable][1]),
                         clearable=False
                     )
                 ],
@@ -34,8 +39,5 @@ def get_dropdowns():
         dropdowns.append(div)
 
     return html.Div([
-              
-        html.H1(children='Simulator'),
-
         html.Div(dropdowns)
         ])

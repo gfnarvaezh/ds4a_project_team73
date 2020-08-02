@@ -1,11 +1,15 @@
+import pandas as pd
+
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 import dash
+import dash_bootstrap_components as dbc
 import dash_html_components as html
 import dash_core_components as dcc
 import plotly.graph_objects as go
-import pandas as pd
+from dash.dependencies import Input, Output, State
 
+#< ---- Code to move to an assessment Library --->
 def get_df_from_state():
     """
     function can be replaced by a connection to db 
@@ -23,7 +27,7 @@ def get_df_city_from_state(state):
     function can be replaced by a connection to db 
     and retrieve table of results by state only
     """
-    df_city = get_df_city()
+    df_city = pd.read_csv("data/CITY_SUMMARY_SB11_20192.csv",sep='¬', encoding='utf-8')
     df_city = df_city[df_city.ESTU_DEPTO_RESIDE == state]
     return df_city
 
@@ -32,8 +36,7 @@ def get_df_college_from_state(state,city):
     function can be replaced by a connection to db 
     and retrieve table of results by state only
     """
-    #df_college = pd.read_csv("data/SCHOOL_SUMMARY_SB11_20192.csv",sep='¬', encoding='utf-8')
-    df_college = pd.read_excel("data/SCHOOL_SUMMARY_SB11_20192.xlsx",sheetname=0)
+    df_college = pd.read_csv("data/SCHOOL_SUMMARY_SB11_20192.csv",sep='¬', encoding='utf-8')
     df_college = df_college[(df_college.ESTU_DEPTO_RESIDE == state)&(df_college.ESTU_MCPIO_RESIDE == city)]
     return df_college
 
@@ -76,7 +79,7 @@ def get_state_summary_from_state_period(level,state,city,period,feature):
     if level == 'country':
         df = df[df.ESTU_DEPTO_RESIDE == state].reset_index(drop=True)
     elif level == 'state':
-        df = df[df.ESTU_MCPIO_RESIDE == city].reset_index(drop=True)
+        df = df[df.ESTU_DEPTO_RESIDE == state].reset_index(drop=True)
     else:
         #df = df[df.COLE_NOMBRE_SEDE == state].reset_index(drop=True)
         a=1
@@ -88,19 +91,17 @@ def get_average_state_gauge(level='country',state={},city={},period = 20194,feat
     maxAverage = float(maxRow.AVERAGE) 
     minAverage = float(minRow.AVERAGE)
     average = get_average_from_country_period(level,state,city,period,feature)
-    sumState = get_state_summary_from_state_period(level,state,city,period,feature)
     if level == 'country':
-        Name = sumState.ESTU_DEPTO_RESIDE[0]    
+        Name = 'Colombia'
     elif level == 'state':
-        Name = sumState.ESTU_MCPIO_RESIDE[0]
+        Name = state    
     else:
-        Name = sumState.COLE_NOMBRE_SEDE[0]
-
-    Average = float(sumState.AVERAGE)
+        Name = city
+    Average = average
     layout = go.Layout(
       autosize=False,
       width=400,
-      height=170,
+      height=150,
       margin=dict(l=10, r=10, t=40, b=10))
     fig = go.Figure(go.Indicator(
         domain = {'x': [0, 1], 'y': [0, 1]},
@@ -115,7 +116,8 @@ def get_average_state_gauge(level='country',state={},city={},period = 20194,feat
                     {'range': [average, maxAverage], 'color': "lightgreen"}],
                 'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 500}})
                 ,layout=layout)
-    fig.update_layout(width=400, height=170
+                
+    fig.update_layout(width=300, height=165
     , font = {'color': "darkblue", 'family': "Arial"},
     )
 
@@ -137,7 +139,6 @@ def get_indicator_card(type,level='country',state={},city={}):
         iconGly = "glyphicon glyphicon-triangle-bottom"
         if level == 'country':
             Row = get_min_average_from_country_period(level,feature = 'punt_global_sum')
-            #location ='temp'
             location = Row.ESTU_DEPTO_RESIDE[0] 
         elif level == 'state':
             Row = get_min_average_from_country_period(level,state,feature = 'punt_global_sum')
@@ -145,7 +146,6 @@ def get_indicator_card(type,level='country',state={},city={}):
         else:
             Row = get_min_average_from_country_period(level,state,city,feature = 'punt_global_sum')
             location = Row.COLE_NOMBRE_SEDE[0]   
-            #location ='temp'
     else:
         cardHeaderTitle = "Highest Average Score"
         colorType = "success"
@@ -153,7 +153,6 @@ def get_indicator_card(type,level='country',state={},city={}):
         if level == 'country':
             Row = get_max_average_from_country_period(level,feature = 'punt_global_sum')
             location = Row.ESTU_DEPTO_RESIDE[0]
-            print( Row ) 
         elif level == 'state':
             Row = get_max_average_from_country_period(level,state,feature = 'punt_global_sum')
             location = Row.ESTU_MCPIO_RESIDE[0]            
@@ -188,20 +187,17 @@ def get_header_country():
 
     return card_max_country, card_min_country
 
-def get_dash_country():
-    return get_header_country()
-
 def get_header_state(state='BOYACA'):
-    state = 'BOYACA'
     card_max_state = get_indicator_card(type='max',level='state',state=state)
     gauge_state = dcc.Graph(figure=get_average_state_gauge(level='state',state=state,city='BERBEO'))
     card_min_state = get_indicator_card(type='min',level='state',state=state)
     return card_max_state, gauge_state, card_min_state
 
-def get_dash_state(state = 'BOYACA'):
-    state = 'BOYACA'
-    print(state)
-    return get_header_state(state)
+def get_header_city(state, city):
+    card_max_city = get_indicator_card(type='max',level='city',state=state,city=city)
+    gauge_city = dcc.Graph(figure=get_average_state_gauge(level='city',state=state,city=city))
+    card_min_city = get_indicator_card(type='min',level='city',state=state,city=city)
+    return card_max_city, gauge_city, card_min_city
 
 if __name__ == "__main__":
     print(get_average_state_gauge(level='state',state='ARAUCA',city='BERBEO'))

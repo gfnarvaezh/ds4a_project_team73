@@ -7,6 +7,17 @@ footer{
     margin: auto;
 }
 
+.title_dropdown_header_box{
+    margin: auto;
+}
+
+.title_dropdown_header{
+    background-color: #f9f9f9;
+    padding: 5px;
+    margin: 7px 0px 4px 0px;
+    border-radius: 5px;
+}
+
 .prescriptive_var_text{
     width: calc(26%);
     display: inline-block;
@@ -59,13 +70,64 @@ footer{
     text-align: center;
 }
 
-#analytics_country_filter_period_box{
-    margin: auto;
+#analytics_country_filter_option_bar_chart{
+    margin: 10px;
+}
+
+#analytics_country_filter_score_bar_chart{
+    margin: 10px;
+}
+
+#state_map_box{
+    width: 50%;
+    display: inline-block;
+    padding: 0px 0px 30px 0px;
+}
+
+#state_bar_char_box{
+    width: 50%;
+    display: inline-block;
+}
+
+#country_map_box{
+    width: 50%;
+    display: inline-block;
+    padding: 0px 0px 30px 0px;
+}
+
+#country_bar_char_box{
+    width: 50%;
+    display: inline-block;
+}
+
+#city_bar_char_box{
+    width: 50%;
+    display: inline-block;
+}
+
+#city_table_box{
+    width: 50%;
+    display: inline-block;
+}
+
+#analytics_city_filter_variable_bar_chart{
+    width: 50%;
 }
 
 #app-content{
     width: 90%;
     margin: auto;
+}
+
+#predictive_result_numeric_box{
+    text-align: center;
+    margin: auto;
+    width: 25%;
+    background-color: #f9f9f9;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 #prescriptive_description_box{
@@ -74,6 +136,8 @@ footer{
     margin: 0px 0px 15px 0px;
     width: 70%;
     margin: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 
 #prescriptive_description_title{
@@ -95,6 +159,9 @@ footer{
 
 #prescriptive_sample_size{
     margin: 5px 10px 5px 0px;
+    border-radius: 4px;
+    border-width: thin;
+    width: 100px;
 }
 
 #prescriptive_result_box{

@@ -26,7 +26,6 @@ def get_prescriptive(columns_to_choose):
 def get_prescriptive_filters(columns_to_choose):
     return html.Div([
               
-        html.H1(children='Prescriptive analytics', id='prescriptive_title'),
         html.Div([
             html.P(children='How to use this tool?', id='prescriptive_description_title'),
             html.P(children='In this section, you can simulate two scenarios and see how it would affect the score of the students. In the boxes below, select the variables you want to analyze and fill the percentages acordingly. The number of samples is just the number of students involved in the simulation (a bigger number is better, but the simulation takes longer). ', id='prescriptive_description'),
@@ -120,7 +119,7 @@ class prescriptive_class():
         output.append(html.P('Case 2', className = 'prescriptive_var_box prescriptive_var_title'))
 
         for value in sorted_values:
-            output.append(html.P(value, className = 'prescriptive_var_text'))
+            output.append(html.P(translator.translate(value), className = 'prescriptive_var_text'))
             output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, className = 'prescriptive_var_box prescriptive_case_1', persistence = True, min = 0, max = 100))
             self.ids_number += 1
             output.append(dcc.Input(id="prescriptive_id_" + str(self.ids_number), type="number", value = 0, className = 'prescriptive_var_box prescriptive_case_2', persistence = True, min = 0, max = 100))

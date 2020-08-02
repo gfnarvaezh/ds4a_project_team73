@@ -120,3 +120,13 @@ def get_scores():
     'PUNT_SOCIALES_CIUDADANAS',
     'PUNT_INGLES'
     ]
+
+def get_variables_predictive():
+    return ['FAMI_ESTRATOVIVIENDA',
+            'FAMI_EDUCACIONPADRE',
+            'FAMI_EDUCACIONMADRE',
+            'FAMI_NUMLIBROS',
+            'FAMI_COMELECHEDERIVADOS',
+            'ESTU_DEDICACIONLECTURADIARIA',
+            'ESTU_DEDICACIONINTERNET',
+            'ESTU_HORASSEMANATRABAJA']

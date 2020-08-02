@@ -84,15 +84,15 @@ class maps():
         fig = go.Figure(go.Choroplethmapbox(geojson=map_geoson, 
                                             locations=df[location_var],
                                             z=df[color_var],
-                                            #colorscale="Viridis", 
-                                            colorscale=["red", "green"],
+                                            colorscale="Viridis", 
+                                            #colorscale=["red", "green"],
                                             zmin=df[color_var].min(),
                                             zmax=df[color_var].max(), 
-                                            marker_opacity=0.9, 
-                                            marker_line_width=0))
+                                            marker_opacity=0.95, 
+                                            marker_line_width=0.1))
 
         fig.update_layout( mapbox_style="carto-positron",mapbox_zoom=zoom_val,mapbox_center = {"lat": lat_center, "lon": lon_center})
-        fig.update_layout(margin={"r":0,"t":10,"l":10,"b":10})
+        fig.update_layout(margin={"r":10,"t":10,"l":10,"b":10})
         return fig
 
     def draw_colombian_map(self):
