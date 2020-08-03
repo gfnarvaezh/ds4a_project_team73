@@ -26,6 +26,9 @@ app = dash.Dash(external_stylesheets = stylesheets)
 
 app.config['suppress_callback_exceptions'] = True
 
+server = app.server
+app.config['suppress_callback_exceptions'] = True
+
 app.layout = html.Div(
     [
         html.Div(
